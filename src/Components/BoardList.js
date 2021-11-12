@@ -1,17 +1,13 @@
 import React from "react";
-const sort = [
-  "제목",
-  "선생님",
-  "모집 인원"
-];
+const sort = ["제목", "선생님", "모집 인원"];
 const BoardList = ({ setIsBoard }) => {
   return (
     <div>
       <div>
         <select>
-          {sort.map((e) =>
+          {sort.map((e) => (
             <option key={e}>{e}</option>
-          )}
+          ))}
         </select>
         <input type="text" />
         <button>검색</button>
@@ -27,14 +23,12 @@ const BoardList = ({ setIsBoard }) => {
               <td>등록일</td>
             </tr>
           </thead>
-          <tbody>
-
-          </tbody>
+          <tbody></tbody>
         </table>
-        <button onClick={()=>setIsBoard(false)}>글쓰기</button>
+        <button onClick={() => setIsBoard(false)}>글쓰기</button>
       </div>
     </div>
   );
-}
+};
 
 export default BoardList;

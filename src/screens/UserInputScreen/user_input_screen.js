@@ -37,12 +37,11 @@ function UserInputScreen() {
     );
     const querySnapshot = await getDocs(q);
     const user = querySnapshot.docs;
-    console.log();
     if (user.length !== 0) {
-      const getData = await (await getDoc(doc(db, "User", user[0].id))).data();
-      console.log(getData);
+      const DocData = await getDoc(doc(db, "User", user[0].id));
+      const getData = DocData.data();
       history.push("/main", {
-        userInfo: getData,
+        userInfo: { ...getData, docId: DocData.id },
       });
     }
   };
