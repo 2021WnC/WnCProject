@@ -37,7 +37,8 @@ function UserInputScreen() {
     );
     const querySnapshot = await getDocs(q);
     const user = querySnapshot.docs;
-    if (user) {
+    console.log();
+    if (user.length !== 0) {
       const getData = await (await getDoc(doc(db, "User", user[0].id))).data();
       console.log(getData);
       history.push("/main", {
@@ -52,7 +53,13 @@ function UserInputScreen() {
   const [UserInterest, setUserInterest] = useState("0");
   const [UserRole, setUserRole] = useState("0"); // 0-학생,1-선생님,2-관리자(직접)
   const [UserStudent, setUserStudent] = useState("0");
-  const [UserCareer, setUserCareer] = useState("");
+  const [CareerInput, setCareerInput] = useState("");
+  const [UserCareer, setUserCareer] = useState([]);
+
+  const addCareer = () => {
+    setUserCareer([...UserCareer, CareerInput]);
+    setCareerInput("");
+  };
 
   const inputChange = (e) => {
     switch (e.target.name) {
@@ -70,6 +77,9 @@ function UserInputScreen() {
         break;
       case "career":
         setUserCareer(e.target.value);
+        break;
+      case "careerInput":
+        setCareerInput(e.target.value);
         break;
       default:
         break;
@@ -127,15 +137,19 @@ function UserInputScreen() {
             ))}
           </select>
         ) : (
-          <input
-            required
-            name="career"
-            onChange={inputChange}
-            value={UserCareer}
-            placeholder="경력을 입력하세요"
-            maxLength="150"
-          />
+          <div>
+            <input
+              name="careerInput"
+              onChange={inputChange}
+              value={CareerInput}
+              placeholder="경력을 입력하세요"
+            />
+            <button onClick={addCareer}>경력추가</button>
+          </div>
         )}
+        {UserCareer.map((e) => {
+          return <div>{e}</div>;
+        })}
         <button type="submit" onClick={submitToMainScreen}>
           정보입력완료
         </button>
