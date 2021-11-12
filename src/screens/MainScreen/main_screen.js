@@ -1,24 +1,15 @@
-import React from "react";
-import { useLocation, useHistory } from "react-router";
+import React, { useState } from "react";
+import BoardList from "../../Components/BoardList";
+import WritePost from "../../Components/WritePost";
+
 
 function MainScreen() {
-  const location = useLocation();
-  const history = useHistory();
+  const [isBoard,setIsBoard] = useState(true);
+  console.log(isBoard)
   return (
-    <div>
-      <button onClick={() => console.log(location.state.userInfo)}>
-        Current auth check
-      </button>
-      <button
-        onClick={() =>
-          history.push("/teachers", {
-            userInfo: location.state.userInfo,
-          })
-        }
-      >
-        go to teachers
-      </button>
-    </div>
+    <>
+    {isBoard ? <BoardList setIsBoard={setIsBoard}/> : <WritePost setIsBoard={setIsBoard}/>}
+   </>
   );
 }
 
