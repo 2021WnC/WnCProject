@@ -1,9 +1,11 @@
 import React from "react";
-
+import Header from "./Components/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen/home_screen";
 import MainScreen from "./screens/MainScreen/main_screen";
 import UserInputScreen from "./screens/UserInputScreen/user_input_screen";
+import TeacherScreen from "./screens/TeacherScreen/teacher_screen";
+import BoardScreen from "./screens/BoardScreen/board_screen";
 
 function AppRouter() {
   return (
@@ -17,16 +19,16 @@ function AppRouter() {
             <UserInputScreen />
           </Route>
           <Route exact path="/main">
+             <Header/>
             <MainScreen />
           </Route>
-          <Route exact path="/teacher">
-            <MainScreen />
+          <Route exact path="/teachers">
+          <Header/>
+          <TeacherScreen/>
           </Route>
-          <Route exact path="/board">
-            <MainScreen />
-          </Route>
-          <Route exact path="/board/:boardid">
-            <MainScreen />
+          <Route path="/board/:id">
+          <Header/>
+          <BoardScreen/>
           </Route>
         </Switch>
       </Router>
