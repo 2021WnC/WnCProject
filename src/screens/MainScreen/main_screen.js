@@ -1,13 +1,15 @@
-import React from "react";
-import { authService } from "../../Firebase";
+import React, { useState } from "react";
+import BoardList from "../../Components/BoardList";
+import WritePost from "../../Components/WritePost";
+
 
 function MainScreen() {
+  const [isBoard,setIsBoard] = useState(true);
+  console.log(isBoard)
   return (
-    <div>
-      <button onClick={() => console.log(authService.currentUser)}>
-        Current auth check
-      </button>
-    </div>
+    <>
+    {isBoard ? <BoardList setIsBoard={setIsBoard}/> : <WritePost setIsBoard={setIsBoard}/>}
+   </>
   );
 }
 
