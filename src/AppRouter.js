@@ -19,16 +19,16 @@ function AppRouter() {
             <UserInputScreen />
           </Route>
           <Route exact path="/main">
-             <Header/>
+            <Header />
             <MainScreen />
           </Route>
           <Route exact path="/teachers">
-          <Header/>
-          <TeacherScreen/>
+            <Header />
+            <TeacherScreen />
           </Route>
           <Route path="/board/:id">
-          <Header/>
-          <BoardScreen/>
+            <Header />
+            <BoardScreen />
           </Route>
         </Switch>
       </Router>

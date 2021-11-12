@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { firestoreService } from "../../Firebase";
-import { addDoc, collection } from "firebase/firestore/lite";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+  getDoc,
+  doc,
+} from "firebase/firestore/lite";
 // 이름 분야 선생님인지/학생인지 - 선생님의경우 경력,학생일경우 중/고등학생인지
 
 const interest = [
@@ -19,13 +27,32 @@ const role = ["학생", "선생님"];
 const student = ["중학생", "고등학생"];
 
 function UserInputScreen() {
+  const db = firestoreService;
+  const location = useLocation();
+  const history = useHistory();
+  const getDataFromFirestore = async () => {
+    const q = query(
+      collection(db, "User"),
+      where("uid", "==", location.state.user.uid)
+    );
+    const querySnapshot = await getDocs(q);
+    const user = querySnapshot.docs;
+    if (user) {
+      const getData = await (await getDoc(doc(db, "User", user[0].id))).data();
+      console.log(getData);
+      history.push("/main", {
+        userInfo: getData,
+      });
+    }
+  };
+  useEffect(() => {
+    getDataFromFirestore();
+  });
   const [UserName, setUserName] = useState("");
   const [UserInterest, setUserInterest] = useState("0");
   const [UserRole, setUserRole] = useState("0"); // 0-학생,1-선생님,2-관리자(직접)
   const [UserStudent, setUserStudent] = useState("0");
   const [UserCareer, setUserCareer] = useState("");
-  const location = useLocation();
-  const history = useHistory();
 
   const inputChange = (e) => {
     switch (e.target.name) {
@@ -59,11 +86,9 @@ function UserInputScreen() {
         student: student[UserStudent],
         career: UserCareer,
       };
-      const db = firestoreService;
-      console.log(user);
-      await addDoc(collection(db, "User"), body).then(() =>
+      await addDoc(collection(db, "User"), body).then((e) =>
         history.push("/main", {
-          userInfo: body,
+          userInfo: { ...body, docId: e.id },
         })
       );
     }
