@@ -1,11 +1,11 @@
-.home-screen-container {
+.home-screen {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.home-screen-user-container {
+.home-screen-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;

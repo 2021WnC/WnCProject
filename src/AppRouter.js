@@ -19,6 +19,15 @@ function AppRouter() {
           <Route exact path="/main">
             <MainScreen />
           </Route>
+          <Route exact path="/teacher">
+            <MainScreen />
+          </Route>
+          <Route exact path="/board">
+            <MainScreen />
+          </Route>
+          <Route exact path="/board/:boardid">
+            <MainScreen />
+          </Route>
         </Switch>
       </Router>
     </>

@@ -68,9 +68,9 @@ function HomeScreen() {
   const EmailChange = (e) => setEmail(e.target.value);
   const PasswordChange = (e) => setPassword(e.target.value);
   return (
-    <div className="home-screen-container">
+    <div className="home-screen">
       homescreen
-      <div className="home-screen-user-container">
+      <div className="home-screen-container">
         <div className="home-screen-input-container">
           <input placeholder="email" value={Email} onChange={EmailChange} />
           <input
