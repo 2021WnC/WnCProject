@@ -2,3 +2,4 @@
 @import "../screens/HomeScreen/home_screen.css";
 @import "../screens/MainScreen/main_screen.css";
 @import "../screens/UserInputScreen/user_input_screen.css";
+@import "../Components/Header.css";
