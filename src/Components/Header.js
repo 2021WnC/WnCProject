@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <Link to="/board/2500">과외 학생 모집</Link>
+      <Link to="/main">과외 학생 모집</Link>
       <Link to="/teachers">선생님 목록</Link>
       <FaUserCircle size="24" />
       <FaBell size="24" />
