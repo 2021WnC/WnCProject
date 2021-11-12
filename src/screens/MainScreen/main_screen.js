@@ -4,7 +4,6 @@ import WritePost from "../../Components/WritePost";
 
 function MainScreen() {
   const [isBoard, setIsBoard] = useState(true);
-  console.log(isBoard);
   return (
     <>
       {isBoard ? (
