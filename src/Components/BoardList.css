@@ -1,38 +1,117 @@
+.board-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-top: 10%;
+}
+#class_search {
+  border: 4px solid #888;
+  border-radius: 4px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+#category_search {
+  width: 100px;
+  height: 30px;
+  border: 2px solid #999;
+  font-family: "Nanumgothic";
+  border-radius: 3px;
+}
+
+.board-search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 5px solid #888;
+  border-radius: 5px;
+  background-color: #fff;
+}
 .board-list {
-    display:grid;
-    grid-template-columns: repeat(auto-fill,300px);
-    grid-gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 25px;
+  width: 100%;
+  padding: 50px 230px;
+  box-sizing: border-box;
+  justify-content: center;
+  justify-items: center;
 }
 .board-list img {
-    width: 230px;
-    height: 150px;
+  width: 230px;
+  height: 150px;
 }
 .board-list__board {
-    width: 230px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #666;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: black;
+  text-align: center;
 }
 .board-list__board > div {
-    position: relative;
+  position: relative;
 }
-.board-list__board > div >span {
-    position: absolute;
-    background-color: rgba(0,0,0,0.5);
-    color:white;
-    padding:4px 8px;
-    top:0px;
-    left:0;
+.board-list__board > div > span {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px 8px;
+  top: 0px;
+  left: 0;
 }
 .board-list__board > span:first-of-type {
-    font-weight: bold;
-    font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 .board-list__board > span:nth-of-type(2) {
-    font-size: 14px;
+  font-size: 14px;
 }
 .board-list__board > span:nth-of-type(3),
 .board-list__board > span:nth-of-type(4) {
-    font-size: 12px;
-    color:rgb(120,120,120);
+  font-size: 12px;
+  color: black;
+}
+
+.btn-board {
+  width: 50px;
+  padding: 0px;
+  border: 3px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn-board:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-append {
+  width: 150px;
+  padding: 20px;
+  border: 3px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: #fff;
+}
+
+.btn-append:hover {
+  background-color: #333;
+  color: #fff;
 }

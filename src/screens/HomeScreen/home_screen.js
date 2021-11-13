@@ -7,13 +7,12 @@ import {
   signInWithPopup,
   signOut,
   setPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
 } from "firebase/auth";
 import { useHistory } from "react-router";
 import { authService } from "../../Firebase";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-
 
 function HomeScreen() {
   const history = useHistory();
@@ -48,16 +47,16 @@ function HomeScreen() {
   };
   const GoogleLogin = () => {
     const provider = new GoogleAuthProvider();
-    setPersistence(authService,browserSessionPersistence).then(()=>{
-    signInWithPopup(authService, provider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      })
+    setPersistence(authService, browserSessionPersistence).then(() => {
+      signInWithPopup(authService, provider)
+        .then((result) => {
+          const user = result.user;
+          setUser(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     });
   };
   const GithubLogin = () => {
@@ -80,14 +79,14 @@ function HomeScreen() {
         <h2>Log-In</h2>
         <div className="login-sns">
           <li>
-            <a>
+            <span>
               <BsGithub onClick={GithubLogin} size="36"></BsGithub>
-            </a>
+            </span>
           </li>
           <li>
-            <a>
+            <span>
               <FcGoogle onClick={GoogleLogin} size="36"></FcGoogle>
-            </a>
+            </span>
           </li>
         </div>
         <div className="login-email">

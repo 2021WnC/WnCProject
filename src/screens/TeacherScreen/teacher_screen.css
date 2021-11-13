@@ -6,14 +6,44 @@
   width: 100vw;
   height: 100vh;
 }
-.teacher-screen-search {
-  margin: 100px auto;
-}
+
 .teacher-screen-search-result {
   display: block;
 }
+
 .teacher-screen-card {
   width: 40vw;
-  margin: 30px auto;
-  background-color: aliceblue;
+  margin: 60px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+  background-color: white;
+}
+
+.teacher-name {
+  padding: 16px 24px;
+  margin: 0;
+  font-size: 20px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.teacher-carrer {
+  padding: 16px 24px;
+  margin: 0;
+  font-size: 16px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.teacher-carrer-list {
+  margin: 24px 0;
+  list-style-type: square;
+}
+
+.teacher-carrer-list-item {
+  border-bottom: 1px solid #eaeaea;
+  margin-left: 64px;
+  padding: 8px 0;
+  font-size: 14px;
 }
