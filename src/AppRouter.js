@@ -19,7 +19,7 @@ function AppRouter() {
             <UserInputScreen />
           </Route>
           <Route exact path="/main">
-            <Header />
+            <Header isMain={true}/>
             <MainScreen />
           </Route>
           <Route exact path="/teachers">

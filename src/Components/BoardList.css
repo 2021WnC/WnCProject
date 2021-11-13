@@ -1,7 +1,20 @@
+.board-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    margin-top: 150px;
+  }
 .board-list {
     display:grid;
     grid-template-columns: repeat(auto-fill,300px);
     grid-gap: 25px;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    padding: 0 100px;
+    box-sizing: border-box;
 }
 .board-list img {
     width: 230px;
@@ -35,4 +48,18 @@
 .board-list__board > span:nth-of-type(4) {
     font-size: 12px;
     color:rgb(120,120,120);
+}
+.board-list__board > span {
+    text-align: center;
+}
+
+.board-noimage {
+    width:230px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    opacity: 0.2;
 }

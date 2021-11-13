@@ -80,14 +80,14 @@ function HomeScreen() {
         <h2>Log-In</h2>
         <div className="login-sns">
           <li>
-            <a>
+            <span>
               <BsGithub onClick={GithubLogin} size="36"></BsGithub>
-            </a>
+            </span>
           </li>
           <li>
-            <a>
+            <span>
               <FcGoogle onClick={GoogleLogin} size="36"></FcGoogle>
-            </a>
+            </span>
           </li>
         </div>
         <div className="login-email">

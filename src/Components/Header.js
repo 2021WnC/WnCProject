@@ -2,8 +2,9 @@ import React from "react";
 import { FaUserCircle, FaBell, FaRegSun } from "react-icons/fa";
 import { GoOrganization } from "react-icons/go";
 import { GrLogout } from "react-icons/gr";
-import { Link } from "react-router-dom";
-const Header = () => {
+import { Link,useHistory } from "react-router-dom";
+const Header = ({isMain}) => {
+  const history = useHistory();
   return (
     <>
       <header>
@@ -15,9 +16,12 @@ const Header = () => {
             <ul className="menu">
               <li>
                 <p>
-                  <Link to="/main">
-                    <button className="btn-header">과외 학생 모집</button>
-                  </Link>
+                    <button className="btn-header" onClick={()=>{
+                      history.push("/main");
+                      if(isMain){
+                    history.go(0);
+                      }
+                    }}>과외 학생 모집</button>
                 </p>
               </li>
               <li>

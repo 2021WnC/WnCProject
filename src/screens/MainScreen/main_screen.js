@@ -26,7 +26,7 @@ function MainScreen() {
   
   return (
     <>
-    {isBoard ? <BoardList setIsBoard={setIsBoard}/> : <WritePost setIsBoard={setIsBoard} userid={userInfo.id}/>}
+    {isBoard ? <BoardList setIsBoard={setIsBoard} user={userInfo}/> : <WritePost isEdit={false} setIsBoard={setIsBoard} userid={userInfo.id}/>}
    </>
   );
 }
