@@ -7,13 +7,12 @@ import {
   signInWithPopup,
   signOut,
   setPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
 } from "firebase/auth";
 import { useHistory } from "react-router";
 import { authService } from "../../Firebase";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-
 
 function HomeScreen() {
   const history = useHistory();
@@ -48,16 +47,16 @@ function HomeScreen() {
   };
   const GoogleLogin = () => {
     const provider = new GoogleAuthProvider();
-    setPersistence(authService,browserSessionPersistence).then(()=>{
-    signInWithPopup(authService, provider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      })
+    setPersistence(authService, browserSessionPersistence).then(() => {
+      signInWithPopup(authService, provider)
+        .then((result) => {
+          const user = result.user;
+          setUser(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     });
   };
   const GithubLogin = () => {

@@ -18,16 +18,16 @@ const BoardList = ({ setIsBoard,user}) => {
           , writer: user.data()
           ,id:e.id
         });
-      };
+      }
       console.log(list);
       setBoardList(list);
-    }
+    };
     getBoardData();
   }, []);
   return (
     <div className="board-wrapper">
      <Search setBoardList={setBoardList}/>
-        <div className="board-list">
+          <div className="board-list">
           {boardList.map((e, idx) => (
             <Link to={`/board/${e.id}`} style={{color:'inherit',textDecoration:'inherit'}} key={idx}>
             <div className="board-list__board" >
@@ -42,9 +42,9 @@ const BoardList = ({ setIsBoard,user}) => {
             </div>
             </Link>
           ))}
-        </div>
-        {user && user.role==="선생님" && <button onClick={() => setIsBoard(false)}>글쓰기</button>}
       </div>
+      {user && user.role==="선생님" && <button onClick={() => setIsBoard(false)} className="btn-append">글쓰기</button>}
+    </div>
   );
 };
 

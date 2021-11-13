@@ -10,7 +10,7 @@ const Header = ({isMain}) => {
       <header>
         <div className="inner">
           <a href="/" className="logo">
-            <GoOrganization size="66" color="saddlebrown" />
+            <GoOrganization size="66" color="#666" />
           </a>
           <div className="sub-menu">
             <ul className="menu">

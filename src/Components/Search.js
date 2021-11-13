@@ -87,14 +87,14 @@ const Search = ({ setBoardList }) => {
         });
         setBoardList(list);
     }
-    return (<div>
-        <select ref={selectRef}>
+    return (<div className="board-search">
+        <select ref={selectRef} id="category_search">
             {sort.map((e) => (
                 <option key={e}>{e}</option>
             ))}
         </select>
-        <input type="text" value={text} onChange={textChangeHandler} />
-        <button onClick={() => searchBoard()}>검색</button>
+        <input type="text" value={text} onChange={textChangeHandler} size="50" id="class_search" />
+        <button onClick={() => searchBoard()} className="btn-board">검색</button>
     </div>);
 }
 export default Search;

@@ -50,28 +50,38 @@ function TeacherScreen() {
 
   return (
     <div className="teacher-screen">
-      <div className="teacher-screen-search">
-        <select onChange={interestChange} value={Interest}>
+      <div>
+        <select
+          className="teacher-screen-search"
+          onChange={interestChange}
+          value={Interest}
+        >
           {interest.map((item, index) => (
             <option key={index} value={index}>
               {item}
             </option>
           ))}
         </select>
-        <button onClick={searchTeacherListWithInterest}>검색하기</button>
+        <button
+          className="teacher-screen-search"
+          onClick={searchTeacherListWithInterest}
+        >
+          검색하기
+        </button>
       </div>
       <div className="teacher-screen-search-result">
         {TeacherList.map((teacher) => {
           return (
             <div key={teacher.uid} className="teacher-screen-card">
-              <div>{teacher.name}선생님</div>
-              <div>분야 : {teacher.interest}</div>
+              <div className="teacher-name">
+                {teacher.name}선생님 ({teacher.interest})
+              </div>
+              <div className="teacher-carrer">경력사항</div>
               <div>
-                경력
-                <ul>
+                <ul className="teacher-carrer-list">
                   {teacher.career &&
                     teacher.career.map((e) => {
-                      return <li>{e}</li>;
+                      return <li className="teacher-carrer-list-item">{e}</li>;
                     })}
                 </ul>
               </div>
