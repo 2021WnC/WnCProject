@@ -1,0 +1,38 @@
+.board-list {
+    display:grid;
+    grid-template-columns: repeat(auto-fill,300px);
+    grid-gap: 25px;
+}
+.board-list img {
+    width: 230px;
+    height: 150px;
+}
+.board-list__board {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.board-list__board > div {
+    position: relative;
+}
+.board-list__board > div >span {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    color:white;
+    padding:4px 8px;
+    top:0px;
+    left:0;
+}
+.board-list__board > span:first-of-type {
+    font-weight: bold;
+    font-size: 18px;
+}
+.board-list__board > span:nth-of-type(2) {
+    font-size: 14px;
+}
+.board-list__board > span:nth-of-type(3),
+.board-list__board > span:nth-of-type(4) {
+    font-size: 12px;
+    color:rgb(120,120,120);
+}

@@ -6,9 +6,12 @@ import {
   GithubAuthProvider,
   signInWithPopup,
   signOut,
+  setPersistence,
+  browserSessionPersistence
 } from "firebase/auth";
 import { useHistory } from "react-router";
 import { authService } from "../../Firebase";
+
 
 function HomeScreen() {
   const history = useHistory();
@@ -43,6 +46,7 @@ function HomeScreen() {
   };
   const GoogleLogin = () => {
     const provider = new GoogleAuthProvider();
+    setPersistence(authService,browserSessionPersistence).then(()=>{
     signInWithPopup(authService, provider)
       .then((result) => {
         const user = result.user;
@@ -51,7 +55,8 @@ function HomeScreen() {
       .catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
-      });
+      })
+    });
   };
   const GithubLogin = () => {
     const provider = new GithubAuthProvider();

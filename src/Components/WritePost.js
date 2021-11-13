@@ -1,9 +1,11 @@
-import { addDoc, collection } from "@firebase/firestore/lite";
+import { addDoc, collection, updateDoc,doc } from "@firebase/firestore/lite";
 import React, { useState, useRef } from "react";
-import { firestoreService } from "../Firebase";
+import { firestorageService, firestoreService } from "../Firebase";
+import { uploadBytes,ref, getDownloadURL } from "@firebase/storage";
 const WritePost = ({ setIsBoard ,userid}) => {
     const db = firestoreService;
     const inputRefs = useRef([]);
+    const [File, setFile] = useState();
     const interest = [
         "수학",
         "영어",
@@ -18,7 +20,8 @@ const WritePost = ({ setIsBoard ,userid}) => {
 
     const postHanlder = async() => {
         const date = new Date();
-        const today = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0")
+        const today = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0") + " " 
+        + String(date.getHours()).padStart(2, "0") + ":"+String(date.getMinutes()).padStart(2,"0");
         console.log(inputRefs.current[4].value);
         const title = inputRefs.current[0].value;
         const contents = inputRefs.current[1].value;
@@ -46,11 +49,32 @@ const WritePost = ({ setIsBoard ,userid}) => {
                 isModified: false,
                 writer:userid
             }
-            await addDoc(collection(db,"board"),
+           await addDoc(collection(db,"board"),
                 thisContents
-            );
+            ).then((e)=>getFileURL(e.id));
+            
+          
             setIsBoard(true);
         }
+    }
+    const onFileChange = (e) => {
+        const theFile = e.target.files[0];
+        setFile(theFile);
+    }
+    const getFileURL = async(id) => {
+        const storage = firestorageService;
+        await uploadBytes(
+            ref(storage, `images/${id}/${File.name}`),
+            File
+          );
+        await getDownloadURL(ref(storage,`images/${id}/${File.name}`)).then(async(e)=>{
+            await updateDoc(doc(db,"board",id),{
+                image:{
+                    src:e,
+                    name:File.name
+                }
+            })
+        })
     }
     return (
         <>
@@ -61,7 +85,7 @@ const WritePost = ({ setIsBoard ,userid}) => {
                 </div>
                 <div>
                     <span>그룹 과외</span>
-                    <input type="radio" name="isGroup" ref={(el) => inputRefs.current[5] = el } checked />
+                    <input type="radio" name="isGroup" ref={(el) => inputRefs.current[5] = el } defaultChecked />
                     <span>1대 1 과외</span>
                     <input type="radio" name="isGroup" ref={(el) => inputRefs.current[6] = el} />
                 </div>
@@ -86,6 +110,11 @@ const WritePost = ({ setIsBoard ,userid}) => {
                     <input type="date" onChange={(e) => console.log(e.target.value)} ref={(el) => inputRefs.current[3] = el} />
                     <input type="date" onChange={(e) => console.log(e.target.value)} ref={(el) => inputRefs.current[4] = el} />
                 </div>
+                <div>
+                    <span>모집 이미지</span>
+                    <input type="file" onChange={onFileChange}/>
+                </div>
+
                 <button onClick={() => postHanlder()}>등록하기</button>
             </div>
         </>
