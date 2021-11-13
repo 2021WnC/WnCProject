@@ -11,6 +11,8 @@ import {
 } from "firebase/auth";
 import { useHistory } from "react-router";
 import { authService } from "../../Firebase";
+import { BsGithub } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 
 function HomeScreen() {
@@ -74,40 +76,50 @@ function HomeScreen() {
   const PasswordChange = (e) => setPassword(e.target.value);
   return (
     <div className="home-screen">
-      homescreen
-      <div className="home-screen-container">
-        <div className="home-screen-input-container">
+      <div className="login">
+        <h2>Log-In</h2>
+        <div className="login-sns">
+          <li>
+            <a>
+              <BsGithub onClick={GithubLogin} size="36"></BsGithub>
+            </a>
+          </li>
+          <li>
+            <a>
+              <FcGoogle onClick={GoogleLogin} size="36"></FcGoogle>
+            </a>
+          </li>
+        </div>
+        <div className="login-email">
+          <h4>E-mail</h4>
           <input placeholder="email" value={Email} onChange={EmailChange} />
+        </div>
+        <div className="login-pwd">
+          <h4>Password</h4>
           <input
             placeholder="password"
             value={Password}
             onChange={PasswordChange}
+            type="password"
           />
         </div>
-        <div className="home-screen-social-container">
-          <button onClick={GithubLogin}>깃허브 로그인</button>
-          <button onClick={GoogleLogin}>구글로그인</button>
-        </div>
+
         {IsLogin ? (
-          <button onClick={loginWithEmailAndPassword}>로그인하기</button>
+          <div className="submit" onClick={loginWithEmailAndPassword}>
+            <button>로그인</button>
+          </div>
         ) : (
-          <button onClick={registerWithEmailAndPassword}>회원가입하기</button>
+          <div className="submit" onClick={registerWithEmailAndPassword}>
+            <button>회원가입</button>
+          </div>
         )}
-        <div onClick={() => setIsLogin(!IsLogin)}>
+        <div className="change" onClick={() => setIsLogin(!IsLogin)}>
           {IsLogin ? (
             <span>회원가입하시려면 여기를 클릭해주세요</span>
           ) : (
             <span>계정이 있으면 여기를 클릭해주세요</span>
           )}
         </div>
-
-        <button onClick={() => console.log(authService.currentUser)}>
-          Current auth check
-        </button>
-        <button onClick={() => history.push("/main")}>
-          메인홈페이지로 이동
-        </button>
-        <button onClick={() => signOut(authService)}>로그아웃</button>
       </div>
     </div>
   );
