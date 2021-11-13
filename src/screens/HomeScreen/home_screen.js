@@ -76,9 +76,7 @@ function HomeScreen() {
         <div className="login-sns">
           <li>
             <a>
-              <BsGithub onClick={GithubLogin} size="36">
-                깃
-              </BsGithub>
+              <BsGithub onClick={GithubLogin} size="36"></BsGithub>
             </a>
           </li>
           <li>
