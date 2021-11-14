@@ -1,0 +1,43 @@
+.wrapper-admin {
+   margin-top: 80px;
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   padding:10px;
+   box-sizing: border-box;
+}
+.admin-table {
+    width: 70%;
+    text-align: center;
+}
+.admin-table thead {
+    padding-bottom: 20px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.admin-table tbody {
+    font-size:16px;
+    font-weight:600;
+}
+.admin-table tr {
+    width: 100%;
+}
+.admin-table tr>td:nth-child(1) {
+    width: 100px;
+}
+.admin-table tr>td:nth-child(2) {
+    width: 20%;
+}
+.admin-table button {
+    all:unset;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    padding: 4px 8px;
+}
+.admin-table button:hover {
+    background-color: #333;
+    color:white;
+    
+}

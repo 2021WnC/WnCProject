@@ -1,7 +1,7 @@
 .write-wrapper {
   display: grid;
   place-items: center;
-  margin-top: 10%;
+  margin-top: 80px;
 }
 
 .Write-table {
@@ -88,7 +88,7 @@
 
 .btn-write {
   width: 200px;
-  padding: 20px;
+  padding: 10px;
   border: 2px solid #888;
   border-radius: 4px;
   color: #333;
@@ -100,7 +100,9 @@
   display: block;
   transition: 0.4s;
 }
-
+.btn-write:first-child {
+  margin-right: 10px;
+}
 .btn-write:hover {
   background-color: #333;
   color: #fff;
@@ -110,4 +112,8 @@
 .textarea {
   resize: none;
   border: none;
+}
+.write-buttons {
+  display: flex;
+
 }

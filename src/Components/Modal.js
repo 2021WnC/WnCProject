@@ -17,14 +17,16 @@ function Modal(props) {
   return (
     <div className="modal-container">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>회원정보 수정하기</div>
+        <div>
+          <span style={{fontSize:'24px'}}>회원정보 수정하기</span>
+          </div>
         <button className="modal-button" onClick={props.modalToggle}>
           닫기
         </button>
       </div>
       <div className="modal-input">
         <div className="modal-input-container">
-          <label>이름</label>
+          <label style={{fontWeight:'bold'}}>이름</label>
           <input
             value={props.nameValue}
             onChange={props.nameChange}
@@ -32,7 +34,7 @@ function Modal(props) {
           />
         </div>
         <div className="modal-input-container">
-          <label>신분</label>
+          <label style={{fontWeight:'bold'}}>신분</label>
           <select value={props.roleValue} onChange={props.roleChange}>
             {role.map((item, index) => (
               <option value={item} key={index}>
@@ -42,7 +44,7 @@ function Modal(props) {
           </select>
         </div>
         <div className="modal-input-container">
-          <label>분야</label>
+          <label style={{fontWeight:'bold'}}>분야</label>
           <select value={props.interestValue} onChange={props.interestChange}>
             {interest.map((item, index) => (
               <option value={item} key={index}>

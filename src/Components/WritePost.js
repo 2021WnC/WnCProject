@@ -89,6 +89,8 @@ const WritePost = ({
             getFileURL(e.id).then(() => {
               setIsBoard(true);
             });
+          } else {
+            setIsBoard(true);
           }
         });
       } else {

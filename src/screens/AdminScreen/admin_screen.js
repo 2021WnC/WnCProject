@@ -39,15 +39,8 @@ function AdminScreen() {
     });
   };
   return (
-    <div
-      style={{
-        marginTop: "8vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <table>
+    <div className="wrapper-admin" >
+      <table className="admin-table">
         <thead>
           <tr>
             <td>순서</td>

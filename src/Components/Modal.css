@@ -7,16 +7,15 @@
   left: 33vw;
   width: 30vw;
   height: 300px;
-  background-color: rgb(224, 219, 219);
+  background-color: white;
   z-index: 10;
   border-radius: 10px;
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .modal-button {
+  all:unset;
   padding: 10px;
-  background-color: rgba(70, 70, 70, 0.3);
-  border: 0.5px solid #333;
-  border-radius: 5px;
+  background-color: white;
 }
 .modal-button:hover {
   background-color: #333;

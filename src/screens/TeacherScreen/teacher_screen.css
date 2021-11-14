@@ -1,19 +1,36 @@
 .teacher-screen {
-  margin-top: 10vh;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+
 }
 
 .teacher-screen-search-result {
-  display: block;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
 }
-
+.teacher-screen-search{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.teacher-screen-cards {
+  overflow-y:scroll;
+  overflow-x:auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .teacher-screen-card {
   width: 40vw;
-  margin: 60px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -46,12 +63,6 @@
   margin-left: 64px;
   padding: 8px 0;
   font-size: 14px;
-}
-.teacher-screen-search {
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
 }
 .teacher-screen-search select,
 .teacher-screen-search button {
