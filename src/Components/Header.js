@@ -53,8 +53,9 @@ const Header = ({ isMain }) => {
     await authService.currentUser
       .delete()
       .then(() => deleteDoc(doc(db, "User", userId.current)))
-      .then(() => console.log("deleteFinished"));
-    await authService.signOut().then(() => history.push("/"));
+      .then(() => console.log("deleteFinished"))
+      .then(() => authService.signOut())
+      .then(() => history.push("/"));
   };
 
   return (
