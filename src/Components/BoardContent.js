@@ -27,6 +27,7 @@ const BoardContent = ({ boardInfo, userInfo, setEdit, boardID }) => {
     ).then(() => history.go(0));
   }
   const reportBoard=async()=>{
+    alert("신고가 접수되었습니다.");
     await addDoc(collection(firestoreService,"report"),{
       checked:false,
       reason:inputRef.current.value,
