@@ -64,11 +64,13 @@
   border-bottom: 1px solid black;
 }
 .teacher-screen-search button {
+  border: 2px solid #333;
   margin-left: 10px;
-  border: 1px solid black;
   border-radius: 10px;
 }
 .teacher-screen-search button:hover {
   cursor: pointer;
-  background-color: green;
+  background-color: #333;
+  color: #fff;
+  transition: 0.4s;
 }
