@@ -45,16 +45,6 @@ const Header = ({ isMain }) => {
                   <button className="btn-header">선생님 목록</button>
                 </Link>
               </li>
-<<<<<<< HEAD
-              {isAdmin === true && (
-                <li>
-                  <Link to="/admin">
-                    <FaRegSun size="30" />
-                  </Link>
-                </li>
-              )}
-=======
->>>>>>> 3eb8427801d760e9600a241d01121577352edcbd
               <li>
               <Link to="/lectures">
                   <button className="btn-header">강의 목록</button>
@@ -65,8 +55,6 @@ const Header = ({ isMain }) => {
                 <FaUserCircle size="30" />
               </li>
               <li>
-<<<<<<< HEAD
-=======
                 <FaBell size="30" />
               </li>
               {isAdmin === true && (
@@ -77,7 +65,6 @@ const Header = ({ isMain }) => {
                 </li>
               )}
               <li>
->>>>>>> 3eb8427801d760e9600a241d01121577352edcbd
                 <GrLogout size="30" onClick={userLogOut} />
               </li>
             </ul>
