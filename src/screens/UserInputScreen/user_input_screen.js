@@ -99,6 +99,7 @@ function UserInputScreen() {
         role: role[UserRole],
         student: student[UserStudent],
         career: UserCareer,
+        black: false,
         lectures: [],
       };
       await addDoc(collection(db, "User"), body).then((e) =>
