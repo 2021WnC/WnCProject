@@ -43,7 +43,8 @@ const BoardList = ({ setIsBoard,user}) => {
             </Link>
           ))}
       </div>
-      {user && user.role==="선생님" && <button onClick={() => setIsBoard(false)} className="btn-append">글쓰기</button>}
+      {user && user.role==="선생님" && <button onClick={() => setIsBoard(false)} className="btn-append" 
+      disabled={user.black}>글쓰기</button>}
     </div>
   );
 };

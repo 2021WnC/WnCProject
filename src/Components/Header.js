@@ -5,7 +5,7 @@ import { GrLogout } from "react-icons/gr";
 import { Link, useHistory } from "react-router-dom";
 import { authService, firestoreService } from "../Firebase";
 import { getUserInfo, isAdminFunction } from "../Func";
-import { updateDoc, doc, deleteDoc } from "firebase/firestore/lite";
+import { updateDoc, doc, deleteDoc,query,collection,where,getDocs } from "firebase/firestore/lite";
 import Modal from "./Modal";
 const Header = ({ isMain }) => {
   const history = useHistory();
@@ -15,7 +15,6 @@ const Header = ({ isMain }) => {
   const [UserName, setUserName] = useState("");
   const [UserRole, setUserRole] = useState("");
   const [UserInterest, setUserInterest] = useState("");
-
   const db = firestoreService;
   const userId = useRef();
   useEffect(() => {
@@ -32,7 +31,7 @@ const Header = ({ isMain }) => {
   }, []);
 
   const userLogOut = () => {
-    authService.signOut().then(() => history.push("/"));
+    authService.signOut().then(() => {history.push("/");history.go(0)});
   };
   const nameChange = (e) => {
     setUserName(e.target.value);
@@ -47,23 +46,25 @@ const Header = ({ isMain }) => {
     await updateDoc(doc(db, "User", userId.current), {
       name: UserName,
       role: UserRole,
-    }).then(() => console.log("updateFinished"));
+    }).then(() => history.go(0));
   };
   const userDelete = async () => {
+    const q = query(collection(db, "board"), where("writer", "==", userId.current));
+      const querySnapshot = await (await getDocs(q)).docs;
+      for(const e of querySnapshot) {
+        await deleteDoc(doc(db,"board",e.id));
+      }
     await authService.currentUser
       .delete()
       .then(() => deleteDoc(doc(db, "User", userId.current)))
-      .then(() => console.log("deleteFinished"));
-    await authService.signOut().then(() => history.push("/"));
+      .then(() => console.log("deleteFinished")).then(async()=>await authService.signOut().then(() => {history.push("/");history.go(0)}));
   };
 
   return (
     <>
       <header>
         <div className="inner">
-          <a href="/main" className="logo">
-            <GoOrganization size="30" color="#666" />
-          </a>
+            <GoOrganization size="50" color="#666" />
           <div className="sub-menu">
             <ul className="menu">
               <li>

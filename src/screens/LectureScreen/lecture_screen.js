@@ -42,15 +42,19 @@ const LectureScreen = () => {
             <div className="lecture-wrapper">
                 {!userInfo ? <span>Loading...</span> : 
                     (!lectures ? <span>Load Lectures...</span> :
-                        <ul>
+                        <>
+                        <h1>강의 목록</h1>
+                        <ul className="lecture__lectures">
                        { lectures.map((e,idx) =>(
                            <li key={idx}>
-                            <Link to={`/board/${e.id}`}>
-                                <span>{`강의명 : ${e.title}`}</span>
+                            <Link to={`/board/${e.id}`} style={{color:"inherit",textDecoration:'inherit'}}>
+                                <span>{`${idx}. `}</span>
+                                <span>{`${e.title}`}</span>
                             </Link>
                             </li>
                         ))}
                         </ul>
+                        </>
                         )
                 }
             </div>

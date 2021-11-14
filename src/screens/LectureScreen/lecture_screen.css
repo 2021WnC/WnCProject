@@ -1,3 +1,30 @@
 .lecture-wrapper {
-    margin-top: 120px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lecture-wrapper h1{
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.lecture__lectures{
+    padding: 10px;
+    
+}
+.lecture__lectures li{
+    margin:5px;
+    padding:10px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: all 0.15s ease-in-out;
+}
+.lecture__lectures li span:first-child{
+    font-size: 24px;
+    color:rgba(0,0,0,0.45);
+}
+.lecture__lectures li:hover {
+    color:white;
+    background-color: rgba(0,0,0,0.4);
 }

@@ -1,9 +1,13 @@
+#root {
+  height: 100%;
+}
 body {
   color: #333;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
   font-family: "Nanum Gothic", sans-serif;
+  height: calc(100vh - 80px);
 }
 
 .inner {
@@ -13,7 +17,7 @@ body {
 }
 
 header {
-  height: 10vh;
+  height: 80px;
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #c8c8c8;
@@ -23,18 +27,14 @@ header {
 }
 
 header > .inner {
-  height: 120px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
 }
 
 header .logo {
   height: 75px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  display: flex;
-  align-items: center;
 }
 
 header .sub-menu {
