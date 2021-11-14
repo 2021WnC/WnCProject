@@ -16,7 +16,8 @@ const role = ["학생", "선생님"];
 function Modal(props) {
   return (
     <div className="modal-container">
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div>회원정보 수정하기</div>
         <button className="modal-button" onClick={props.modalToggle}>
           닫기
         </button>
