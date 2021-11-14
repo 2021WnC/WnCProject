@@ -47,3 +47,28 @@
   padding: 8px 0;
   font-size: 14px;
 }
+.teacher-screen-search {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.teacher-screen-search select,
+.teacher-screen-search button {
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+.teacher-screen-search select {
+  width: max-content;
+  border-bottom: 1px solid black;
+}
+.teacher-screen-search button {
+  margin-left: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.teacher-screen-search button:hover {
+  cursor: pointer;
+  background-color: green;
+}
