@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useHistory } from "react-router";
+import React, { useState, useEffect, useRef } from "react";
 import { firestoreService } from "../../Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore/lite";
 const interest = [
@@ -14,11 +13,9 @@ const interest = [
   "코딩",
 ];
 function TeacherScreen() {
-  const location = useLocation();
-  const history = useHistory();
   const [TeacherList, setTeacherList] = useState([]);
   const [Interest, setInterest] = useState(0);
-  
+  const isLoaded = useRef(false);
   const db = firestoreService;
 
   const searchTeacherListWithInterest = async () => {
@@ -29,11 +26,11 @@ function TeacherScreen() {
       where("interest", "==", interest[Interest].toString())
     );
     const querySnapshot = await (await getDocs(q)).docs;
-    querySnapshot.forEach((e) => resultTeachers.push(e.data()));
+    querySnapshot.map((e) => resultTeachers.push(e.data()));
     setTeacherList(resultTeachers);
   };
   useEffect(() => {
-    if (TeacherList.length === 0) {
+    if (TeacherList.length === 0 && isLoaded.current.valueOf() === false) {
       const getTeachers = async () => {
         let resultTeachers = [];
         const q = query(collection(db, "User"), where("role", "==", "선생님"));
@@ -41,6 +38,7 @@ function TeacherScreen() {
         querySnapshot.forEach((e) => resultTeachers.push(e.data()));
         setTeacherList(resultTeachers);
       };
+      isLoaded.current = true;
       getTeachers();
     }
   }, [TeacherList, db]);

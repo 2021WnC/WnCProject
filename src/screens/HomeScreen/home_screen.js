@@ -5,7 +5,6 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   signInWithPopup,
-  signOut,
   setPersistence,
   browserSessionPersistence,
 } from "firebase/auth";

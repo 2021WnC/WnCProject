@@ -6,6 +6,7 @@ import MainScreen from "./screens/MainScreen/main_screen";
 import UserInputScreen from "./screens/UserInputScreen/user_input_screen";
 import TeacherScreen from "./screens/TeacherScreen/teacher_screen";
 import BoardScreen from "./screens/BoardScreen/board_screen";
+import AdminScreen from "./screens/AdminScreen/admin_screen";
 
 function AppRouter() {
   return (
@@ -25,6 +26,10 @@ function AppRouter() {
           <Route exact path="/teachers">
             <Header />
             <TeacherScreen />
+          </Route>
+          <Route exact path="/admin">
+            <Header />
+            <AdminScreen />
           </Route>
           <Route path="/board/:id">
             <Header />
