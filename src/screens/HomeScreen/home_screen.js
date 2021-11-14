@@ -31,6 +31,7 @@ function HomeScreen() {
       })
       .catch((error) => {
         const errorMessage = error.message;
+        alert("로그인실패");
         console.log(errorMessage);
       });
   };
@@ -40,7 +41,9 @@ function HomeScreen() {
         setUser(result.user);
       })
       .catch((error) => {
+        console.log(error);
         const errorMessage = error.message;
+        alert("회원가입실패");
         console.log(errorMessage);
       });
   };
@@ -113,9 +116,9 @@ function HomeScreen() {
         )}
         <div className="change" onClick={() => setIsLogin(!IsLogin)}>
           {IsLogin ? (
-            <span>회원가입하시려면 여기를 클릭해주세요</span>
+            <span>회원가입하러가기</span>
           ) : (
-            <span>계정이 있으면 여기를 클릭해주세요</span>
+            <span>로그인하러가기</span>
           )}
         </div>
       </div>

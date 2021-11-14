@@ -10,8 +10,10 @@ const Header = ({ isMain }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
-    authService.onAuthStateChanged(async (user) => {
-      setIsAdmin(await isAdminFunction(authService.currentUser.uid));
+    authService.onAuthStateChanged(async () => {
+      if (authService.currentUser) {
+        setIsAdmin(await isAdminFunction(authService.currentUser.uid));
+      }
     });
   }, []);
 
@@ -41,7 +43,7 @@ const Header = ({ isMain }) => {
               {isAdmin === true && (
                 <li>
                   <Link to="/admin">
-                    <button className="btn-header">관리자</button>
+                    <FaRegSun size="30" />
                   </Link>
                 </li>
               )}
@@ -50,9 +52,6 @@ const Header = ({ isMain }) => {
               </li>
               <li>
                 <FaBell size="30" />
-              </li>
-              <li>
-                <FaRegSun size="30" />
               </li>
               <li>
                 <GrLogout size="30" onClick={userLogOut} />

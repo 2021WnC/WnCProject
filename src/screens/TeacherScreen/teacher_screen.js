@@ -47,7 +47,7 @@ function TeacherScreen() {
   };
 
   return (
-    <div className="teacher-screen">
+    <div className="teacher-screen" style={{ marginTop: "12vh" }}>
       <div>
         <select
           className="teacher-screen-search"
