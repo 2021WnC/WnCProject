@@ -1,15 +1,50 @@
 import React from "react";
 import { FaUserCircle, FaBell, FaRegSun } from "react-icons/fa";
-import { Link } from "react-router-dom";
-const Header = () => {
+import { GoOrganization } from "react-icons/go";
+import { GrLogout } from "react-icons/gr";
+import { Link,useHistory } from "react-router-dom";
+const Header = ({isMain}) => {
+  const history = useHistory();
   return (
     <>
-      <Link to="/main">과외 학생 모집</Link>
-      <Link to="/teachers">선생님 목록</Link>
-      <FaUserCircle size="24" />
-      <FaBell size="24" />
-      <FaRegSun size="24" />
-      <button>Logout</button>
+      <header>
+        <div className="inner">
+          <a href="/" className="logo">
+            <GoOrganization size="66" color="#666" />
+          </a>
+          <div className="sub-menu">
+            <ul className="menu">
+              <li>
+                <p>
+                    <button className="btn-header" onClick={()=>{
+                      history.push("/main");
+                      if(isMain){
+                    history.go(0);
+                      }
+                    }}>과외 학생 모집</button>
+                </p>
+              </li>
+              <li>
+                <Link to="/teachers">
+                  <button className="btn-header">선생님 목록</button>
+                </Link>
+              </li>
+              <li>
+                <FaUserCircle size="30" />
+              </li>
+              <li>
+                <FaBell size="30" />
+              </li>
+              <li>
+                <FaRegSun size="30" />
+              </li>
+              <li>
+                <GrLogout size="30" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
     </>
   );
 };

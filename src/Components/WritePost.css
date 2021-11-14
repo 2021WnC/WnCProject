@@ -1,0 +1,119 @@
+.write-wrapper {
+  display: grid;
+  place-items: center;
+  margin-top: 10%;
+}
+
+.Write-table {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  font-size: 12px;
+  text-shadow: 1px 1px 0px #fff;
+  background: #eaebec;
+  margin: 20px;
+  border: #ccc 3px solid;
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+
+.Write-table th {
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #e0e0e0;
+  background: #ededed;
+  background: -moz-linear-gradient(top, #ededed, #ebebeb);
+  font-size: 30px;
+}
+.Write-table th:first-child {
+  text-align: center;
+}
+.Write-table tr:first-child th:first-child {
+  -moz-border-radius-topleft: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.Write-table tr:first-child th:last-child {
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.Write-table tr {
+  text-align: center;
+  padding-left: 20px;
+}
+.Write-table tr td:first-child {
+  text-align: left;
+  padding-left: 20px;
+  border-left: 0;
+}
+.Write-table tr td {
+  padding: 12px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+
+  background: #fafafa;
+  background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+.Write-table tr.even td {
+  background: #f6f6f6;
+  background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+}
+.Write-table tr:last-child td {
+  border-bottom: 0;
+}
+.Write-table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.Write-table tr:last-child td:last-child {
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.Write-table tr:hover td {
+  background: #f2f2f2;
+  background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+
+.btn-write {
+  width: 120px;
+  padding: 10px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: 0.4s;
+}
+
+.btn-write:hover {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #333;
+}
+
+.textarea {
+  resize: none;
+  border: none;
+}
+.write-buttons{
+  display: flex;
+}
+.write-buttons button:first-child {
+  margin-right:10px;
+}

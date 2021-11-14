@@ -1,70 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { firestoreService } from "../Firebase";
-import { getDocs,collection, getDoc ,doc} from "@firebase/firestore/lite";
+import { getDocs, collection, getDoc, doc, orderBy,query } from "@firebase/firestore/lite";
+import { Link } from "react-router-dom";
+import Search from "./Search";
 
-const sort = [
-  "제목",
-  "선생님",
-  "모집 인원"
-];
-const db=firestoreService;
-const BoardList = ({ setIsBoard }) => {
-  const [boardList,setBoardList] = useState([]);
-  useEffect(()=> {
-    const getBoardData=async()=>{
-    const list=[];
-    const query = await getDocs(collection(db,"board"));
-    for(const e of query.docs) {
-      const user=await getDoc(doc(db,"User",e.data().writer));
-      list.push({
-        ...e.data()
-        ,writer:user.data()
-      });
+const db = firestoreService;
+const BoardList = ({ setIsBoard,user}) => {
+  const [boardList, setBoardList] = useState([]);
+  useEffect(() => {
+    const getBoardData = async () => {
+      const list = [];
+      const querySnapshot = await getDocs(query(collection(db, "board"),orderBy("date","desc")));
+      for (const e of querySnapshot.docs) {
+        const user = await getDoc(doc(db, "User", e.data().writer));
+        list.push({
+          ...e.data()
+          , writer: user.data()
+          ,id:e.id
+        });
+      }
+      console.log(list);
+      setBoardList(list);
     };
-    console.log(list);
-    setBoardList(list);
-  }
-  getBoardData();
-  },[]);
-useEffect(()=>{
-  console.log(boardList);
-},[boardList]);
+    getBoardData();
+  }, []);
   return (
-    <div>
-      <div>
-        <select>
-          {sort.map((e) => (
-            <option key={e}>{e}</option>
+    <div className="board-wrapper">
+     <Search setBoardList={setBoardList}/>
+          <div className="board-list">
+          {boardList.map((e, idx) => (
+            <Link to={`/board/${e.id}`} style={{color:'inherit',textDecoration:'inherit'}} key={idx}>
+            <div className="board-list__board" >
+              <div>
+                {Object.keys(e.image).length<1 ? <div className="board-noimage">No Image</div> : <img src={e.image.src} alt="boardImage" />}
+                <span>{idx + 1}</span>
+              </div>
+              <span>{e.title}</span>
+              <span>{`기간 ${e.term[0]}~${e.term[1]}`}</span>
+              <span>{e.writer.name}</span>
+              <span>{`등록일 ${e.date} `}{e.isModified&&"(수정됨)"}</span>
+            </div>
+            </Link>
           ))}
-        </select>
-        <input type="text" />
-        <button>검색</button>
       </div>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <td>번호</td>
-              <td>제목</td>
-              <td>과외 기간</td>
-              <td>작성자</td>
-              <td>등록일</td>
-            </tr>
-          </thead>
-          <tbody>
-            {boardList.map((e,idx)=>(
-              <tr key="idx">
-              <td>{idx}</td>
-              <td>{e.title}</td>
-              <td>{`${e.term[0]}~${e.term[1]}`}</td>
-              <td>{e.writer.name}</td>
-              <td>{e.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => setIsBoard(false)}>글쓰기</button>
-      </div>
+      {user && user.role==="선생님" && <button onClick={() => setIsBoard(false)} className="btn-append">글쓰기</button>}
     </div>
   );
 };
