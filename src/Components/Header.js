@@ -4,23 +4,20 @@ import { GoOrganization } from "react-icons/go";
 import { GrLogout } from "react-icons/gr";
 import { Link, useHistory } from "react-router-dom";
 import { authService } from "../Firebase";
-import { getUserInfo, isAdminFunction } from "../Func";
+import { isAdminFunction } from "../Func";
 const Header = ({ isMain }) => {
   const history = useHistory();
-  const [UserInfo, setUserInfo] = useState();
+
   const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        const loadUserInfo = async () => {
-          setUserInfo(await getUserInfo(authService.currentUser.uid));
-        };
-        loadUserInfo().then(() =>
-          setIsAdmin(isAdminFunction(authService.currentUser.uid))
-        );
-      }
+    authService.onAuthStateChanged(async (user) => {
+      setIsAdmin(await isAdminFunction(authService.currentUser.uid));
     });
   }, []);
+
+  const userLogOut = () => {
+    authService.signOut().then(() => history.push("/"));
+  };
 
   return (
     <>
@@ -51,7 +48,7 @@ const Header = ({ isMain }) => {
                   <button className="btn-header">선생님 목록</button>
                 </Link>
               </li>
-              {isAdmin && (
+              {isAdmin === true && (
                 <li>
                   <Link to="/admin">
                     <button className="btn-header">관리자</button>
@@ -59,7 +56,7 @@ const Header = ({ isMain }) => {
                 </li>
               )}
               <li>
-                <FaUserCircle size="30" />
+                <FaUserCircle onClick={() => console.log(isAdmin)} size="30" />
               </li>
               <li>
                 <FaBell size="30" />
@@ -68,7 +65,7 @@ const Header = ({ isMain }) => {
                 <FaRegSun size="30" />
               </li>
               <li>
-                <GrLogout size="30" />
+                <GrLogout size="30" onClick={userLogOut} />
               </li>
             </ul>
           </div>

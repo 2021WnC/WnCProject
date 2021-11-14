@@ -17,7 +17,7 @@ export const isAdminFunction = async (uid) => {
     where("role", "==", "관리자")
   );
   const querySnapshot = await (await getDocs(q)).docs;
-  if (querySnapshot.length > 0) {
+  if (querySnapshot && querySnapshot.length > 0) {
     return true;
   } else {
     return false;
