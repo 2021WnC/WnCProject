@@ -26,7 +26,7 @@
 .modal-input-container {
   padding: 15px;
 }
-.modal-input-container > input,
+.modal-input-container  input,
 .modal-input-container > select {
   background: none;
   border: none;
