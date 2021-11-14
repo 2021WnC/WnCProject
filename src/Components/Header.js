@@ -44,6 +44,7 @@ const Header = ({ isMain }) => {
       role: UserRole,
     }).then(() => console.log("updateFinished"));
   };
+  const userDelete = async () => {};
 
   return (
     <>

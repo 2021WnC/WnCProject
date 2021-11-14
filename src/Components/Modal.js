@@ -17,6 +17,7 @@ function Modal(props) {
     >
       <div>
         <button onClick={props.modalToggle}>닫기</button>
+        <button onClick={props.userDelete}>삭제</button>
         <label>이름</label>
         <input
           value={props.nameValue}
