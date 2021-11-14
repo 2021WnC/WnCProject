@@ -53,20 +53,24 @@ function Modal(props) {
             ))}
           </select>
         </div>
-        {props && props.roleValue === "선생님" && (
-          <div className="modal-input-container">
+        {props && props.roleValue === "선생님" && (<>
+          <div className="modal-input-container" style={{display:'flex',alignItems:'center'}}>
               <label style={{ fontWeight: "bold" }}>경력</label>
               <input
                 placeholder="경력을 추가하세요"
                 value={props.tempCareerValue}
                 onChange={props.tempCareerChange}
-                style={{width:'80%'}}
+                style={{width:'60%',height:'20px',marginRight:'22px'}}
               />
-              <button onClick={props.addCareer}>경력추가</button>
-              <div>
-            {props && props.careerValue.map((e) => <span>e</span>)}
-            </div>
+              <button onClick={props.addCareer} className="modal-button">경력추가</button>
           </div>
+          <ol style={{marginLeft:'15px',listStyleType:'square'}}>
+          {props &&
+            props.careerValue.map((e,idx) => {
+              return <li style={{marginLeft:'20px',marginBottom:'10px'}}>{`${e}`}</li>;
+            })}
+        </ol>
+        </>
         )}
       </div>
       <div
