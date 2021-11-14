@@ -30,6 +30,11 @@ const Header = ({isMain}) => {
                 </Link>
               </li>
               <li>
+                <Link to="/lectures">
+                  <button className="btn-header">강의 목록</button>
+                </Link>
+              </li>
+              <li>
                 <FaUserCircle size="30" />
               </li>
               <li>

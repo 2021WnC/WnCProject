@@ -38,10 +38,12 @@ header .logo {
 }
 
 header .sub-menu {
+  height: 80%;
   position: absolute;
   top: 10px;
   right: 0;
   display: flex;
+  align-items: center;
 }
 
 header .sub-menu ul.menu {
@@ -55,13 +57,12 @@ header .sub-menu ul.menu li {
   align-items: center;
 }
 
-header .sub-menu ul.menu li:nth-child(n + 2) {
+header .sub-menu ul.menu li {
   margin: 0 15px;
 }
 
 header .sub-menu ul.menu li a {
   font-size: 12px;
-  padding: 10px 16px;
   display: block;
   color: #656565;
 }

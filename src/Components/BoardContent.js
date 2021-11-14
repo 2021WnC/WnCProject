@@ -16,6 +16,16 @@ const BoardContent = ({boardInfo,userInfo,setEdit,boardID}) => {
         })
         history.go(0);
     }
+    const deleteLecture = async() => {
+        const list = [...userInfo.lectures].filter((e)=>e!==boardID);
+        await updateDoc(doc(firestoreService,"board",boardID), {
+            currentNumber : String(Number(boardInfo.currentNumber) - 1)
+        })
+        await updateDoc(doc(firestoreService,"User",userInfo.id), {
+            lectures : [...list]
+        })
+        history.go(0);
+    }
     return (<div className="boardscreen-wrapper">
     {!boardInfo ? <span>loading...</span> :
     <>
@@ -33,8 +43,14 @@ const BoardContent = ({boardInfo,userInfo,setEdit,boardID}) => {
                 <span>{boardInfo.writer.name}</span>
                 <span>{`등록일 ${boardInfo.date} `}{boardInfo.isModified&&"(수정됨)"}</span>
                 </div>
-                <span>{`현재 수강생 ${boardInfo.currentNumber}`}</span>
-                {userInfo && userInfo.role==="학생" &&<button onClick={()=>applyLecture()}>신청</button>}
+                <span>{`현재 수강생 ${boardInfo.currentNumber}명`}</span>
+                {userInfo && userInfo.role==="학생" &&
+                (!userInfo.lectures.includes(boardID) ?<button onClick={()=>applyLecture()}>신청</button> :
+                <>
+                <h3>신청 완료</h3>
+                <button onClick={()=>deleteLecture()}>취소하기</button>
+                </>
+                )}
             </div>
         </div>
         <div className="boardscreen-main">
