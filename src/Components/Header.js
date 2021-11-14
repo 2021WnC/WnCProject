@@ -5,7 +5,7 @@ import { GrLogout } from "react-icons/gr";
 import { Link, useHistory } from "react-router-dom";
 import { authService, firestoreService } from "../Firebase";
 import { getUserInfo, isAdminFunction } from "../Func";
-import { updateDoc, doc } from "firebase/firestore/lite";
+import { updateDoc, doc, deleteDoc } from "firebase/firestore/lite";
 import Modal from "./Modal";
 const Header = ({ isMain }) => {
   const history = useHistory();
@@ -14,6 +14,7 @@ const Header = ({ isMain }) => {
 
   const [UserName, setUserName] = useState("");
   const [UserRole, setUserRole] = useState("");
+  const [UserInterest, setUserInterest] = useState("");
 
   const db = firestoreService;
   const userId = useRef();
@@ -24,6 +25,7 @@ const Header = ({ isMain }) => {
         const user = await getUserInfo(authService.currentUser.uid);
         setUserName(user.name);
         setUserRole(user.role);
+        setUserInterest(user.interest);
         userId.current = user.id;
       }
     });
@@ -38,13 +40,22 @@ const Header = ({ isMain }) => {
   const roleChange = (e) => {
     setUserRole(e.target.value);
   };
+  const interestChange = (e) => {
+    setUserInterest(e.target.value);
+  };
   const userEdit = async () => {
     await updateDoc(doc(db, "User", userId.current), {
       name: UserName,
       role: UserRole,
     }).then(() => console.log("updateFinished"));
   };
-  const userDelete = async () => {};
+  const userDelete = async () => {
+    await authService.currentUser
+      .delete()
+      .then(() => deleteDoc(doc(db, "User", userId.current)))
+      .then(() => console.log("deleteFinished"));
+    await authService.signOut().then(() => history.push("/"));
+  };
 
   return (
     <>
@@ -106,10 +117,13 @@ const Header = ({ isMain }) => {
           <Modal
             nameValue={UserName}
             roleValue={UserRole}
+            interestValue={UserInterest}
             nameChange={nameChange}
             roleChange={roleChange}
+            interestChange={interestChange}
             userEdit={userEdit}
             modalToggle={() => setIsEdit(!isEdit)}
+            userDelete={userDelete}
           />
         </div>
       )}

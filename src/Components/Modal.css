@@ -1,0 +1,43 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  position: absolute;
+  top: 10vh;
+  left: 33vw;
+  width: 30vw;
+  height: 300px;
+  background-color: aliceblue;
+  z-index: 10;
+  border-radius: 10px;
+}
+.modal-button {
+  padding: 10px;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+}
+.modal-button:hover {
+  cursor: pointer;
+}
+.modal-button:first-child:hover {
+  background-color: rgba(216, 47, 47);
+}
+.modal-button:nth-child(2):hover {
+  background-color: rgb(34, 136, 34);
+}
+.modal-input-container {
+  padding: 15px;
+}
+.modal-input-container > input,
+.modal-input-container > select {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 80%;
+}
+.modal-input-container > label {
+  width: 10%;
+  display: inline-block;
+  margin-right: 10px;
+}

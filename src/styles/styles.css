@@ -5,6 +5,7 @@
 @import "../screens/TeacherScreen/teacher_screen.css";
 @import "../Components/BoardList.css";
 @import "../Components/Header.css";
+@import "../Components/Modal.css";
 @import "../screens/BoardScreen/board_screen.css";
 @import "../Components/WritePost.css";
-@import "../screens/LectureScreen/lecture_screen.css"
+@import "../screens/LectureScreen/lecture_screen.css";
