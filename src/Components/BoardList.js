@@ -33,7 +33,7 @@ const BoardList = ({ setIsBoard,user}) => {
             <div className="board-list__board" >
               <div>
                 {Object.keys(e.image).length<1 ? <div className="board-noimage">No Image</div> : <img src={e.image.src} alt="boardImage" />}
-                <span>{idx + 1}</span>
+                <span>{`${idx + 1} ${e.interest}`}</span>
               </div>
               <span>{e.title}</span>
               <span>{`기간 ${e.term[0]}~${e.term[1]}`}</span>
