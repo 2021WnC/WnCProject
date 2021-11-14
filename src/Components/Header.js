@@ -36,7 +36,7 @@ const Header = ({ isMain }) => {
                   <button
                     className="btn-header"
                     onClick={() => {
-                      history.push("/main");
+                      history.push("/");
                       if (isMain) {
                         history.go(0);
                       }

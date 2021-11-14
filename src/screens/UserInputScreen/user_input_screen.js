@@ -40,7 +40,7 @@ function UserInputScreen() {
     if (user.length !== 0) {
       const DocData = await getDoc(doc(db, "User", user[0].id));
       const getData = DocData.data();
-      history.push("/main", {
+      history.push("/", {
         userInfo: { ...getData, docId: DocData.id },
       });
     }
