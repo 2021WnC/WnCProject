@@ -87,8 +87,8 @@
 }
 
 .btn-write {
-  width: 120px;
-  padding: 10px;
+  width: 200px;
+  padding: 20px;
   border: 2px solid #888;
   border-radius: 4px;
   color: #333;
@@ -110,10 +110,4 @@
 .textarea {
   resize: none;
   border: none;
-}
-.write-buttons{
-  display: flex;
-}
-.write-buttons button:first-child {
-  margin-right:10px;
 }

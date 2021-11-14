@@ -36,7 +36,12 @@
     display: block;
     margin-top: 10px;
     font-size: 24px;
-    color:#EF7C8E;
+}
+.boardscreen-contents >h3 {
+    display: block;
+    margin-top: 10px;
+    font-size: 24px;
+    color:red;
 }
 .boardscreen-contents__detail {
     margin-top :10px;

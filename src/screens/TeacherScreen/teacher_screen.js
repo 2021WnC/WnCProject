@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { firestoreService } from "../../Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore/lite";
 const interest = [
@@ -15,8 +15,8 @@ const interest = [
 function TeacherScreen() {
   const [TeacherList, setTeacherList] = useState([]);
   const [Interest, setInterest] = useState(0);
-  const isLoaded = useRef(false);
   const db = firestoreService;
+  const isLoaded = useRef(false);
 
   const searchTeacherListWithInterest = async () => {
     let resultTeachers = [];
@@ -30,7 +30,7 @@ function TeacherScreen() {
     setTeacherList(resultTeachers);
   };
   useEffect(() => {
-    if (TeacherList.length === 0 && isLoaded.current.valueOf() === false) {
+    if (TeacherList.length === 0&& isLoaded.current.valueOf() === false) {
       const getTeachers = async () => {
         let resultTeachers = [];
         const q = query(collection(db, "User"), where("role", "==", "선생님"));

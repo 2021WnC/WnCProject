@@ -70,6 +70,7 @@
   color: white;
   padding: 2px 8px;
   top: 0px;
+  font-size: 12px;
   left: 0;
 }
 .board-list__board > span:first-of-type {
@@ -84,6 +85,7 @@
   font-size: 12px;
   color: black;
 }
+
 .board-list__board > span {
   text-align: center;
 }

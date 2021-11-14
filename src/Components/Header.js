@@ -31,8 +31,13 @@ const Header = ({ isMain }) => {
           <div className="sub-menu">
             <ul className="menu">
               <li>
-                <p>
-                  <button className="btn-header">과외 학생 모집</button>
+              <p>
+                    <button className="btn-header" onClick={()=>{
+                      history.push("/main");
+                      if(isMain){
+                    history.go(0);
+                      }
+                    }}>과외 학생 모집</button>
                 </p>
               </li>
               <li>
@@ -40,6 +45,7 @@ const Header = ({ isMain }) => {
                   <button className="btn-header">선생님 목록</button>
                 </Link>
               </li>
+<<<<<<< HEAD
               {isAdmin === true && (
                 <li>
                   <Link to="/admin">
@@ -47,13 +53,31 @@ const Header = ({ isMain }) => {
                   </Link>
                 </li>
               )}
+=======
+>>>>>>> 3eb8427801d760e9600a241d01121577352edcbd
               <li>
-                <FaUserCircle onClick={() => console.log(isAdmin)} size="30" />
+              <Link to="/lectures">
+                  <button className="btn-header">강의 목록</button>
+                </Link>
+              </li>
+              
+              <li>
+                <FaUserCircle size="30" />
               </li>
               <li>
+<<<<<<< HEAD
+=======
                 <FaBell size="30" />
               </li>
+              {isAdmin === true && (
+                <li>
+                  <Link to="/admin">
+                  <FaRegSun onClick={() => console.log(isAdmin)} size="30" />
+                  </Link>
+                </li>
+              )}
               <li>
+>>>>>>> 3eb8427801d760e9600a241d01121577352edcbd
                 <GrLogout size="30" onClick={userLogOut} />
               </li>
             </ul>
