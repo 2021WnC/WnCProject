@@ -90,3 +90,7 @@ header .sub-menu ul.menu li a:hover {
   background-color: #333;
   color: #fff;
 }
+
+.userIcon:hover {
+  cursor: pointer;
+}

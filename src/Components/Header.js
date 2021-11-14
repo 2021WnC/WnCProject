@@ -93,20 +93,28 @@ const Header = ({ isMain }) => {
               </li>
 
               <li>
-                <FaUserCircle onClick={() => setIsEdit(!isEdit)} size="30" />
+                <FaUserCircle
+                  className="userIcon"
+                  onClick={() => setIsEdit(!isEdit)}
+                  size="30"
+                />
               </li>
               <li>
-                <FaBell size="30" />
+                <FaBell className="userIcon" size="30" />
               </li>
               {isAdmin === true && (
                 <li>
                   <Link to="/admin">
-                    <FaRegSun onClick={() => console.log(isAdmin)} size="30" />
+                    <FaRegSun
+                      className="userIcon"
+                      onClick={() => console.log(isAdmin)}
+                      size="30"
+                    />
                   </Link>
                 </li>
               )}
               <li>
-                <GrLogout size="30" onClick={userLogOut} />
+                <GrLogout className="userIcon" size="30" onClick={userLogOut} />
               </li>
             </ul>
           </div>

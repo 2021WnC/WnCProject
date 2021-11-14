@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { firestoreService } from "../../Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore/lite";
 const interest = [
@@ -30,7 +30,7 @@ function TeacherScreen() {
     setTeacherList(resultTeachers);
   };
   useEffect(() => {
-    if (TeacherList.length === 0&& isLoaded.current.valueOf() === false) {
+    if (TeacherList.length === 0 && isLoaded.current.valueOf() === false) {
       const getTeachers = async () => {
         let resultTeachers = [];
         const q = query(collection(db, "User"), where("role", "==", "선생님"));
@@ -47,7 +47,7 @@ function TeacherScreen() {
   };
 
   return (
-    <div className="teacher-screen" style={{ marginTop: "12vh" }}>
+    <div className="teacher-screen">
       <div>
         <select
           className="teacher-screen-search"
@@ -78,8 +78,12 @@ function TeacherScreen() {
               <div>
                 <ul className="teacher-carrer-list">
                   {teacher.career &&
-                    teacher.career.map((e) => {
-                      return <li className="teacher-carrer-list-item">{e}</li>;
+                    teacher.career.map((e, index) => {
+                      return (
+                        <li key={index} className="teacher-carrer-list-item">
+                          {e}
+                        </li>
+                      );
                     })}
                 </ul>
               </div>

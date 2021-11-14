@@ -1,11 +1,10 @@
 .teacher-screen {
-  margin-top: 5%;
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
 }
 
 .teacher-screen-search-result {
