@@ -37,7 +37,6 @@ function AdminScreen() {
     updateDoc(doc(db, "User", id), {
       black: true,
     });
-    console.log("blacklist");
   };
   return (
     <div className="wrapper-admin" >
