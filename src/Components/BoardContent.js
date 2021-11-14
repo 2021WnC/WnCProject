@@ -1,11 +1,20 @@
 import React from "react";
-import { deleteDoc ,doc} from "@firebase/firestore/lite";
+import { deleteDoc ,doc, updateDoc} from "@firebase/firestore/lite";
 import { firestoreService } from "../Firebase";
 import { useHistory } from "react-router";
 const BoardContent = ({boardInfo,userInfo,setEdit,boardID}) => {
     const history=useHistory();
     const delBoard = async() => {
         await deleteDoc(doc(firestoreService,"board",boardID)).then(()=>history.push("/main"));
+    }
+    const applyLecture = async() => {
+        await updateDoc(doc(firestoreService,"board",boardID), {
+            currentNumber : String(Number(boardInfo.currentNumber) + 1)
+        })
+        await updateDoc(doc(firestoreService,"User",userInfo.id), {
+            lectures : [...userInfo.lectures,boardID]
+        })
+        history.go(0);
     }
     return (<div className="boardscreen-wrapper">
     {!boardInfo ? <span>loading...</span> :
@@ -25,7 +34,7 @@ const BoardContent = ({boardInfo,userInfo,setEdit,boardID}) => {
                 <span>{`등록일 ${boardInfo.date} `}{boardInfo.isModified&&"(수정됨)"}</span>
                 </div>
                 <span>{`현재 수강생 ${boardInfo.currentNumber}`}</span>
-                {userInfo && userInfo.role==="학생" &&<button>신청</button>}
+                {userInfo && userInfo.role==="학생" &&<button onClick={()=>applyLecture()}>신청</button>}
             </div>
         </div>
         <div className="boardscreen-main">

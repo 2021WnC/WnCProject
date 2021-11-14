@@ -56,8 +56,12 @@ function UserInputScreen() {
   const [UserCareer, setUserCareer] = useState([]);
 
   const addCareer = () => {
+    if(CareerInput==="") {
+      alert("경력을 입력해주세요");
+    }else {
     setUserCareer([...UserCareer, CareerInput]);
     setCareerInput("");
+    }
   };
 
   const inputChange = (e) => {
@@ -94,6 +98,7 @@ function UserInputScreen() {
         role: role[UserRole],
         student: student[UserStudent],
         career: UserCareer,
+        lectures : []
       };
       await addDoc(collection(db, "User"), body).then((e) =>
         history.push("/main", {

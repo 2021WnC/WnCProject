@@ -73,11 +73,12 @@ const WritePost = ({ isEdit, setIsBoard, userid, boardInfo, boardID, setBoardInf
                     thisContents
                 ).then((e) => {
                     if (File) {
-                        getFileURL(e.id)
+                        getFileURL(e.id).then(()=>{
+                           setIsBoard(true);
+                        })
                     }
                 }
                 );
-                setIsBoard(true);
             } else {
                 await updateDoc(doc(db, "board", boardID), {
                     title,
@@ -195,7 +196,7 @@ const WritePost = ({ isEdit, setIsBoard, userid, boardInfo, boardID, setBoardInf
                             rows="5"
                             cols="35"
                             className="textarea"
-                            placeholder="경력을 입력하세요."
+                            placeholder="내용을 입력하세요."
                             ref={(el) => (inputRefs.current[1] = el)}
                         />
                     </td>
