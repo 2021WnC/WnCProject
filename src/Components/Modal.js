@@ -64,7 +64,12 @@ function Modal(props) {
               />
               <button onClick={props.addCareer}>경력추가</button>
             </div>
-            {props && props.careerValue.map((e) => e)}
+            <ol>
+              {props &&
+                props.careerValue.map((e) => {
+                  return <li>{e}</li>;
+                })}
+            </ol>
           </div>
         )}
       </div>
