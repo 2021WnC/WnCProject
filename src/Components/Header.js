@@ -46,6 +46,7 @@ const Header = ({ isMain }) => {
     await updateDoc(doc(db, "User", userId.current), {
       name: UserName,
       role: UserRole,
+      interest: UserInterest
     }).then(() => history.go(0));
   };
   const userDelete = async () => {
