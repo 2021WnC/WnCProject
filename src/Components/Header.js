@@ -23,24 +23,14 @@ const Header = ({ isMain }) => {
     <>
       <header>
         <div className="inner">
-          <a href="/" className="logo">
-            <GoOrganization size="66" color="#666" />
+          <a href="/main" className="logo">
+            <GoOrganization size="30" color="#666" />
           </a>
           <div className="sub-menu">
             <ul className="menu">
               <li>
                 <p>
-                  <button
-                    className="btn-header"
-                    onClick={() => {
-                      history.push("/");
-                      if (isMain) {
-                        history.go(0);
-                      }
-                    }}
-                  >
-                    과외 학생 모집
-                  </button>
+                  <button className="btn-header">과외 학생 모집</button>
                 </p>
               </li>
               <li>
