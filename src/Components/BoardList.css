@@ -1,9 +1,11 @@
 .board-wrapper {
+  height: 100%;
+  width: 100%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-  margin-top: 8%;
+  margin-top:80px;
 }
 #class_search {
   border: 2px solid #333;
@@ -37,10 +39,12 @@
   grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 25px;
   width: 100%;
+  height: 60%;
   padding: 50px 230px;
   box-sizing: border-box;
   justify-content: center;
   justify-items: center;
+  overflow-y: scroll;
 }
 .board-list img {
   width: 230px;

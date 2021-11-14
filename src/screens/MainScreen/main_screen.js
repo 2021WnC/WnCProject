@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import BoardList from "../../Components/BoardList";
 import WritePost from "../../Components/WritePost";
 import { authService } from "../../Firebase";
@@ -17,19 +18,14 @@ function MainScreen() {
       }
     });
   }, []);
+  console.log(isBoard);
+  console.log(userInfo);
+  console.log(authService.currentUser);
 
   return (
     <>
-      {isBoard ? (
-        <BoardList setIsBoard={setIsBoard} user={userInfo} />
-      ) : (
-        <WritePost
-          isEdit={false}
-          setIsBoard={setIsBoard}
-          userid={userInfo.id}
-        />
-      )}
-    </>
+    {isBoard ? <BoardList setIsBoard={setIsBoard} user={userInfo}/> : <WritePost isEdit={false} setIsBoard={setIsBoard} userid={userInfo.id}/>}
+   </>
   );
 }
 

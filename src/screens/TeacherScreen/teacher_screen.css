@@ -1,20 +1,36 @@
 .teacher-screen {
-  margin-top: 5%;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+
 }
 
 .teacher-screen-search-result {
-  display: block;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
 }
-
+.teacher-screen-search-div{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.teacher-screen-cards {
+  overflow-y:scroll;
+  overflow-x:auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .teacher-screen-card {
   width: 40vw;
-  margin: 60px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-self: center;

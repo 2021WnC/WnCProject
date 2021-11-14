@@ -7,4 +7,5 @@
 @import "../Components/Header.css";
 @import "../screens/BoardScreen/board_screen.css";
 @import "../Components/WritePost.css";
-@import "../screens/LectureScreen/lecture_screen.css"
+@import "../screens/LectureScreen/lecture_screen.css";
+@import "../screens/AdminScreen/admin_screen.css";

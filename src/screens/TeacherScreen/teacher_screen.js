@@ -47,8 +47,10 @@ function TeacherScreen() {
   };
 
   return (
-    <div className="teacher-screen" style={{ marginTop: "12vh" }}>
-      <div>
+    <div className="teacher-screen">
+      
+      <div className="teacher-screen-search-result">
+      <div className="teacher-screen-search-div">
         <select
           className="teacher-screen-search"
           onChange={interestChange}
@@ -67,7 +69,7 @@ function TeacherScreen() {
           검색하기
         </button>
       </div>
-      <div className="teacher-screen-search-result">
+      <div className="teacher-screen-cards">
         {TeacherList.map((teacher) => {
           return (
             <div key={teacher.uid} className="teacher-screen-card">
@@ -86,6 +88,7 @@ function TeacherScreen() {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );

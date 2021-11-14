@@ -100,6 +100,7 @@ function UserInputScreen() {
         student: student[UserStudent],
         career: UserCareer,
         lectures: [],
+        black:false
       };
       await addDoc(collection(db, "User"), body).then((e) =>
         history.push("/main", {
