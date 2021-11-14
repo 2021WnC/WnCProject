@@ -5,7 +5,15 @@ import { GrLogout } from "react-icons/gr";
 import { Link, useHistory } from "react-router-dom";
 import { authService, firestoreService } from "../Firebase";
 import { getUserInfo, isAdminFunction } from "../Func";
-import { updateDoc, doc, deleteDoc,query,collection,where,getDocs } from "firebase/firestore/lite";
+import {
+  updateDoc,
+  doc,
+  deleteDoc,
+  query,
+  collection,
+  where,
+  getDocs,
+} from "firebase/firestore/lite";
 import Modal from "./Modal";
 const Header = ({ isMain }) => {
   const history = useHistory();
@@ -15,6 +23,8 @@ const Header = ({ isMain }) => {
   const [UserName, setUserName] = useState("");
   const [UserRole, setUserRole] = useState("");
   const [UserInterest, setUserInterest] = useState("");
+  const [UserCareer, setUserCareer] = useState([]);
+  const [tempCareer, setTempCareer] = useState("");
   const db = firestoreService;
   const userId = useRef();
   useEffect(() => {
@@ -25,13 +35,20 @@ const Header = ({ isMain }) => {
         setUserName(user.name);
         setUserRole(user.role);
         setUserInterest(user.interest);
+        setUserCareer(user.career);
         userId.current = user.id;
       }
     });
   }, []);
 
   const userLogOut = () => {
-    authService.signOut().then(() => {history.push("/");history.go(0)});
+    authService.signOut().then(() => {
+      history.push("/");
+      history.go(0);
+    });
+  };
+  const tempCareerChange = (e) => {
+    setTempCareer(e.target.value);
   };
   const nameChange = (e) => {
     setUserName(e.target.value);
@@ -42,35 +59,45 @@ const Header = ({ isMain }) => {
   const interestChange = (e) => {
     setUserInterest(e.target.value);
   };
+  const addCareer = () => {
+    setUserCareer([...UserCareer, tempCareer]);
+    setTempCareer("");
+  };
   const userEdit = async () => {
     await updateDoc(doc(db, "User", userId.current), {
       name: UserName,
       role: UserRole,
+      interest: UserInterest,
+      career: UserCareer,
     }).then(() => history.go(0));
   };
   const userDelete = async () => {
-    const q = query(collection(db, "board"), where("writer", "==", userId.current));
-      const querySnapshot = await (await getDocs(q)).docs;
-      for(const e of querySnapshot) {
-        await deleteDoc(doc(db,"board",e.id));
-      }
+    const q = query(
+      collection(db, "board"),
+      where("writer", "==", userId.current)
+    );
+    const querySnapshot = await (await getDocs(q)).docs;
+    for (const e of querySnapshot) {
+      await deleteDoc(doc(db, "board", e.id));
+    }
     await authService.currentUser
       .delete()
       .then(() => deleteDoc(doc(db, "User", userId.current)))
-<<<<<<< HEAD
       .then(() => console.log("deleteFinished"))
-      .then(() => authService.signOut())
-      .then(() => history.push("/"));
-=======
-      .then(() => console.log("deleteFinished")).then(async()=>await authService.signOut().then(() => {history.push("/");history.go(0)}));
->>>>>>> 776bbf390d9e790ce78774a1bbd96a5dcc5c823d
+      .then(
+        async () =>
+          await authService.signOut().then(() => {
+            history.push("/");
+            history.go(0);
+          })
+      );
   };
 
   return (
     <>
       <header>
         <div className="inner">
-            <GoOrganization size="50" color="#666" />
+          <GoOrganization size="50" color="#666" />
           <div className="sub-menu">
             <ul className="menu">
               <li>
@@ -133,6 +160,10 @@ const Header = ({ isMain }) => {
             nameValue={UserName}
             roleValue={UserRole}
             interestValue={UserInterest}
+            careerValue={UserCareer}
+            tempCareerValue={tempCareer}
+            addCareer={addCareer}
+            tempCareerChange={tempCareerChange}
             nameChange={nameChange}
             roleChange={roleChange}
             interestChange={interestChange}

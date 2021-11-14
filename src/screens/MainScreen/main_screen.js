@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
 import BoardList from "../../Components/BoardList";
 import WritePost from "../../Components/WritePost";
 import { authService } from "../../Firebase";
@@ -18,21 +17,26 @@ function MainScreen() {
       }
     });
   }, []);
-  useEffect(()=> {
-    if(userInfo) {
-      if(userInfo.black) {
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.black) {
         alert("당신은 블랙리스트에 등록되었습니다. 글쓰기 기능이 제한됩니다");
       }
     }
-  },[userInfo]);
-  console.log(isBoard);
-  console.log(userInfo);
-  console.log(authService.currentUser);
+  }, [userInfo]);
 
   return (
     <>
-    {isBoard ? <BoardList setIsBoard={setIsBoard} user={userInfo}/> : <WritePost isEdit={false} setIsBoard={setIsBoard} userid={userInfo.id}/>}
-   </>
+      {isBoard ? (
+        <BoardList setIsBoard={setIsBoard} user={userInfo} />
+      ) : (
+        <WritePost
+          isEdit={false}
+          setIsBoard={setIsBoard}
+          userid={userInfo.id}
+        />
+      )}
+    </>
   );
 }
 
